@@ -11,7 +11,8 @@ import {
   addDoc,
   doc,
   updateDoc,
-  deleteDoc
+  deleteDoc,
+  getDocs
 } from '../firebase'
 
 // Creamos el store
@@ -75,15 +76,25 @@ const store = createStore({
       })
     },
 
-    async seedCursosFromCSV() {
+// 🔹 Sembrar cursos desde CSV solo si la colección está vacía
+    async seedCursosFromCSV({ commit }) {
       try {
+        const colRef = collection(db, 'cursos')
+        const snapshot = await getDocs(colRef)
+
+        // ✅ Si ya existen cursos, salir sin hacer nada
+        if (!snapshot.empty) {
+          console.log('📚 Ya existen cursos en Firestore, no se cargan de nuevo.')
+          return
+        }
+
+        // Cargar CSV
         const response = await fetch(cursosCSV)
         const csvText = await response.text()
         const { data } = Papa.parse(csvText, { header: true })
 
-        const colRef = collection(db, 'cursos')
+        // Insertar cursos en Firestore
         for (const curso of data) {
-          // Convertir tipos
           await addDoc(colRef, {
             ...curso,
             estado: curso.estado === 'true',
@@ -92,27 +103,35 @@ const store = createStore({
             precio: curso.precio
           })
         }
-        commit('showSnackbar', { message: '✅ Cursos cargados desde CSV a Firestore', color: 'success' })
+
+        commit('showSnackbar', {
+          message: '✅ Cursos cargados desde CSV a Firestore',
+          color: 'success'
+        })
       } catch (error) {
-        commit('showSnackbar', { message: '❌ Error cargando cursos desde CSV', color: 'error' })
+        commit('showSnackbar', {
+          message: '❌ Error cargando cursos desde CSV',
+          color: 'error'
+        })
         console.error('❌ Error cargando cursos desde CSV:', error)
       }
     },
 
+    
     async addCurso({ commit }, payload) {
       const colRef = collection(db, 'cursos')
       await addDoc(colRef, payload)
-      commit('showSnackbar', { message: '✅ Curso agregado correctamente', color: 'success' })
+//      commit('showSnackbar', { message: '✅ Curso agregado correctamente', color: 'success' })
     },
     async deleteCurso({ commit }, id) {
       const docRef = doc(db, 'cursos', id)
       await deleteDoc(docRef)
-      commit('showSnackbar', { message: '🗑️ Curso eliminado correctamente', color: 'error' })
+//      commit('showSnackbar', { message: '🗑️ Curso eliminado correctamente', color: 'error' })
     },
     async updateCurso({ commit }, { id, data }) {
       const docRef = doc(db, 'cursos', id)
       await updateDoc(docRef, data)
-      commit('showSnackbar', { message: '✏️ Curso actualizado correctamente', color: 'success' })
+//      commit('showSnackbar', { message: '✏️ Curso actualizado correctamente', color: 'success' })
     }
   }
 })

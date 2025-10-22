@@ -3,24 +3,31 @@
     <!-- Header -->
     <div class="d-flex justify-space-between align-center mb-3">
       <h2>Administrar Cursos</h2>
-      <v-btn color="success" @click="showModal = true">Agregar Curso</v-btn>
+      <v-btn color="success" @click="showModal = true" data-testid="agregar-curso-btn">Agregar Curso</v-btn>
     </div>
 
     <!-- Tabla de cursos -->
-    <v-data-table
-      :headers="fields"
-      :items="cursos"
-      item-key="id"
-      class="elevation-1"
-      dense
-      :hide-default-footer="false"
-      no-data-text="No hay cursos disponibles"
-    >
-      <template #item.actions="{ item }">
-        <v-btn class="mx-1" small color="info" @click="editCurso(item)">Editar</v-btn>
-        <v-btn small class="mx-1" color="error" @click="confirmDelete(item.id)">Eliminar</v-btn>
-      </template>
-    </v-data-table>
+<v-data-table
+  :headers="fields"
+  :items="cursos"
+  item-key="id"
+  class="elevation-1"
+  dense
+  :hide-default-footer="false"
+  no-data-text="No hay cursos disponibles"
+>
+  <!-- Columna acciones -->
+  <template #item.actions="{ item }">
+    <v-btn class="mx-1" small color="info" @click="editCurso(item)">Editar</v-btn>
+    <v-btn small class="mx-1" color="error" @click="confirmDelete(item.id)">Eliminar</v-btn>
+  </template>
+
+  <!-- Columna estado como ícono -->
+  <template #item.estado="{ item }">
+    <v-icon v-if="item.estado" color="green">mdi-check-circle</v-icon>
+    <v-icon v-else color="grey">mdi-close-circle</v-icon>
+  </template>
+</v-data-table>
 
     <!-- Modal para agregar/editar curso -->
     <CourseFormModal v-model:show="showModal" @save="confirmAddCurso" />
@@ -35,7 +42,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn text color="secondary" @click="dialog.show = false">Cancelar</v-btn>
-          <v-btn color="error" @click="deleteCurso(dialog.id)">Eliminar</v-btn>
+          <v-btn color="error" @click="deleteCurso(dialog.id)" data-testid="eliminar-confirm-btn">Eliminar</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -50,7 +57,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn text color="secondary" @click="addDialog.show = false">Cancelar</v-btn>
-          <v-btn color="success" @click="addCurso(addDialog.payload)">Agregar</v-btn>
+          <v-btn color="success" @click="addCurso(addDialog.payload)" data-testid="agregar-confirm-btn">Agregar</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -91,6 +98,7 @@ const fields = [
   { title: 'Duración', key: 'duracion' },
   { title: 'Cupos', key: 'cupos' },
   { title: 'Inscritos', key: 'inscritos' },
+  { title: 'Activo', key: 'estado' },
   { title: 'Acciones', key: 'actions', sortable: false },
 ]
 

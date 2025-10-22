@@ -6,12 +6,14 @@
       <v-card-text>
         <v-form @submit.prevent="login" ref="formRef">
           <v-text-field
+            data-testid="email-input"
             v-model="email"
             label="Email"
             type="email"
             required
           />
           <v-text-field
+            data-testid="password-input"
             v-model="password"
             label="Password"
             type="password"

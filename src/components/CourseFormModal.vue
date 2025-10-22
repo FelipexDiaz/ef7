@@ -9,30 +9,35 @@
             label="Código"
             :rules="[v => !!v || 'El código es requerido']"
             required
+            data-testid="codigo-input"
           />
           <v-text-field
             v-model="form.nombre"
             label="Nombre"
             :rules="[v => !!v || 'El nombre es requerido']"
             required
+            data-testid="nombre-input"
           />
           <v-text-field
             v-model="form.img"
             label="Imagen URL"
             :rules="[v => !!v || 'La URL es requerida']"
             required
+            data-testid="img-input"
           />
           <v-textarea
             v-model="form.descripcion"
             label="Descripción"
             :rules="[v => !!v || 'La descripción es requerida']"
             required
+            data-testid="descripcion-input"
           />
           <v-text-field
             v-model="form.duracion"
             label="Duración"
             :rules="[v => !!v || 'La duración es requerida']"
             required
+            data-testid="duracion-input"
           />
           <v-text-field
             v-model.number="form.cupos"
@@ -40,6 +45,7 @@
             type="number"
             :rules="[v => v > 0 || 'Debe ingresar al menos 1 cupo']"
             required
+            data-testid="cupos-input"
           />
           <v-text-field
             v-model.number="form.inscritos"
@@ -47,18 +53,36 @@
             type="number"
             :rules="[v => v >= 0 || 'No puede ser negativo']"
             required
+            data-testid="inscritos-input"
           />
           <v-text-field
             v-model="form.precio"
             label="Precio"
             :rules="[v => !!v || 'El precio es requerido']"
             required
+            data-testid="precio-input"
           />
-          <v-checkbox v-model="form.estado" label="Activo" />
+          <v-checkbox
+            v-model="form.estado"
+            label="Activo"
+          />
 
           <div class="d-flex justify-end mt-3">
-            <v-btn color="secondary" @click="close">Cancelar</v-btn>
-            <v-btn color="primary" type="submit" class="ms-2">Agregar Curso</v-btn>
+            <v-btn
+              color="secondary"
+              @click="close"
+              data-testid="cancelar-btn"
+            >
+              Cancelar
+            </v-btn>
+            <v-btn
+              color="primary"
+              type="submit"
+              class="ms-2"
+              data-testid="agregar-btn"
+            >
+              Agregar Curso
+            </v-btn>
           </div>
         </v-form>
       </v-card-text>

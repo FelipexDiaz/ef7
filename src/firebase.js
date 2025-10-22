@@ -13,7 +13,8 @@ import {
   addDoc,
   doc,
   updateDoc,
-  deleteDoc
+  deleteDoc,
+  getDocs
 } from 'firebase/firestore'
 
 // ⚠️ REEMPLAZA ESTO con tu configuración real de Firebase
@@ -42,5 +43,6 @@ export {
   addDoc,
   doc,
   updateDoc,
-  deleteDoc
+  deleteDoc,
+  getDocs,
 }

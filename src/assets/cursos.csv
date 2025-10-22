@@ -3,3 +3,13 @@ codigo,nombre,estado,precio,duracion,descripcion,cupos,inscritos,img
 0002,CSS,false,20000,1 mes,curso css,20,0,https://lineadecodigo.com/wp-content/uploads/2014/04/css.png
 0003,SASS,true,40000,2 mes,curso sass,30,0,https://miro.medium.com/max/512/1*9U1toerFxB8aiFRreLxEUQ.png
 0004,VUE,false,50000,3 mes,curso vue,15,0,https://thumbs.gfycat.com/PinkPiercingBullsize_restricted.gif
+0005,JavaScript,true,60000,2 meses,Curso de JavaScript moderno con ES6+,25,0,https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png
+0006,Node.js,true,75000,2 meses,Curso de desarrollo backend con Node.js y Express,20,0,https://nodejs.org/static/images/logo.svg
+0007,React,false,80000,3 meses,Curso de React para construir interfaces dinámicas,15,0,https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg
+0008,Python,true,65000,2 meses,Curso de introducción a Python para principiantes,30,0,https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg
+0009,SQL,true,40000,1.5 meses,Curso de bases de datos y consultas SQL,25,0,https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png
+0010,Git,false,35000,1 mes,Curso completo de control de versiones con Git y GitHub,40,0,https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png
+0011,Firebase,true,70000,2 meses,Curso de backend serverless con Firebase y Firestore,18,0,https://firebase.google.com/downloads/brand-guidelines/PNG/logo-logomark.png
+0012,TypeScript,true,75000,2 meses,Curso de programación con TypeScript y tipado avanzado,22,0,https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg
+0013,Next.js,false,90000,2.5 meses,Curso de desarrollo fullstack con Next.js y React,12,0,https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg
+0014,Tailwind CSS,true,50000,1 mes,Curso de diseño moderno con Tailwind CSS,30,0,https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg
