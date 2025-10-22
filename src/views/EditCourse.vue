@@ -126,6 +126,8 @@ const updateCurso = async () => {
 
   await store.dispatch('updateCurso', { id, data: curso.value })
   showAlert('✅ Curso actualizado correctamente')
+  await new Promise(resolve => setTimeout(resolve, 3000))
+  router.push('/admin')
 }
 
 const cancelar = () => router.push('/admin')
