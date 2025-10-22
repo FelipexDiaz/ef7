@@ -1,0 +1,5 @@
+codigo,nombre,estado,precio,duracion,descripcion,cupos,inscritos,img
+0001,HTML,true,30000,1 mes,curso html,10,0,https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png
+0002,CSS,false,20000,1 mes,curso css,20,0,https://lineadecodigo.com/wp-content/uploads/2014/04/css.png
+0003,SASS,true,40000,2 mes,curso sass,30,0,https://miro.medium.com/max/512/1*9U1toerFxB8aiFRreLxEUQ.png
+0004,VUE,false,50000,3 mes,curso vue,15,0,https://thumbs.gfycat.com/PinkPiercingBullsize_restricted.gif
