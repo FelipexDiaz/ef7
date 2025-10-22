@@ -74,7 +74,7 @@ const login = async () => {
     await signInWithEmailAndPassword(auth, email.value, password.value)
     await store.dispatch('listenAuthState')
     showAlert('✅ Inicio de sesión exitoso', 'success')
-    router.push('/')
+    router.push('/admin')
   } catch (e) {
     showAlert('❌ Error al iniciar sesión: ' + e.message, 'error')
   }
