@@ -171,7 +171,8 @@ También incluye pruebas **E2E** (con Cypress o Jest) para verificar:
 
 Ejecutar pruebas E2E:
 ```bash
-npm run test:e2e
+npm run dev
+npm run cypress:run
 ```
 
 ---

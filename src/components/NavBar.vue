@@ -32,7 +32,7 @@
     </template>
 
     <template v-else>
-      <v-btn text :to="{ path: '/login' }">Login</v-btn>
+      <v-btn text :to="{ path: '/login' }" aria-label="Logout">Login</v-btn>
     </template>
   </v-app-bar>
 </template>

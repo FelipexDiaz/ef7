@@ -9,30 +9,35 @@
             v-model="curso.codigo"
             label="Código"
             readonly
+            aria-label="codigo-input"
           />
           <v-text-field
             v-model="curso.nombre"
             label="Nombre"
             :rules="[v => !!v || 'El nombre es requerido']"
             required
+            aria-label="nombre-input"
           />
           <v-textarea
             v-model="curso.descripcion"
             label="Descripción"
             :rules="[v => !!v || 'La descripción es requerida']"
             required
+            aria-label="descripcion-input"
           />
           <v-text-field
             v-model="curso.duracion"
             label="Duración"
             :rules="[v => !!v || 'La duración es requerida']"
             required
+            aria-label="duracion-input"
           />
           <v-text-field
             v-model="curso.precio"
             label="Precio"
             :rules="[v => !!v || 'El precio es requerido']"
             required
+            aria-label="precio-input"
           />
           <v-text-field
             v-model.number="curso.cupos"
@@ -40,6 +45,7 @@
             type="number"
             :rules="[v => v > 0 || 'Debe ingresar al menos 1 cupo']"
             required
+            aria-label="cupos-input"
           />
           <v-text-field
             v-model.number="curso.inscritos"
@@ -47,21 +53,24 @@
             type="number"
             :rules="[v => v >= 0 || 'No puede ser negativo']"
             required
+            aria-label="inscritos-input"
           />
           <v-text-field
             v-model="curso.img"
             label="Imagen URL"
             :rules="[v => !!v || 'La URL es requerida']"
             required
+            aria-label="img-input"
           />
           <v-checkbox
             v-model="curso.estado"
             label="Activo"
+            aria-label="Activo"
           />
 
           <div class="d-flex justify-end mt-3">
             <v-btn color="secondary" @click="cancelar">Cancelar</v-btn>
-            <v-btn color="primary" type="submit" class="ms-2">Actualizar</v-btn>
+            <v-btn color="primary" type="submit" class="ms-2" data-testid="editar-btn">Actualizar</v-btn>
           </div>
         </v-form>
 

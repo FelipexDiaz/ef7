@@ -102,7 +102,13 @@ const showSnackbar = (message, color = 'success') => {
 }
 
 // Cursos desde Vuex
-const cursos = computed(() => store.getters['courses/all'] || [])
+const cursos = computed(() => {
+  const lista = store.getters['courses/all'] || []
+  // Orden alfabético por nombre (ignora mayúsculas/minúsculas)
+  return [...lista].sort((a, b) =>
+    a.nombre.toLowerCase().localeCompare(b.nombre.toLowerCase())
+  )
+})
 
 // Campos de la tabla
 const fields = [

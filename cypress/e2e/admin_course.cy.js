@@ -1,7 +1,8 @@
-describe('Admin: Agregar curso', () => {
-  it('loguearse, abrir menú, entrar a admin, crear y eliminar un curso', () => {
+describe('Admin: Agregar, editar y eliminar curso', () => {
+  it('loguearse, abrir menú, entrar a admin, crear, editar y eliminar un curso', () => {
     const codigo = 'C001'
     const nombre = 'Curso de Prueba'
+    const nombreEditado = 'Curso de Prueba Editado'
 
     // 1️⃣ Visitar la página principal
     cy.visit('http://localhost:5173')
@@ -36,8 +37,8 @@ describe('Admin: Agregar curso', () => {
     cy.get('[data-testid="duracion-input"]').type('10 horas')
     cy.get('[data-testid="cupos-input"]').clear().type('5')
     cy.get('[data-testid="inscritos-input"]').clear().type('0')
-    cy.get('[data-testid="precio-input"]').type('100')
-    cy.contains('Activo').click()
+    cy.get('[data-testid="precio-input"]').type('100')    
+    cy.get('[aria-label="Activo"]').click()
 
     // 9️⃣ Click en "Agregar Curso" y confirmar
     cy.get('[data-testid="agregar-btn"]').click()
@@ -46,18 +47,36 @@ describe('Admin: Agregar curso', () => {
     // 🔟 Verificar que el curso se creó
     cy.contains(codigo).should('exist')
     cy.contains(nombre).should('exist')
-
-    // 1️⃣1️⃣ Eliminar el curso recién creado
+  // 4️⃣ Ir a la página de edición del curso
     cy.contains(nombre)
-      .parents('tr') // Busca la fila donde aparece el curso
+      .parents('tr')
       .within(() => {
-        cy.contains('Eliminar').click({ force: true }) // o cambia por el selector del icono 🗑️
+        cy.contains('Editar').click({ force: true })
       })
 
-    // 1️⃣2️⃣ Confirmar eliminación si aparece un diálogo
-    cy.get('[data-testid="eliminar-confirm-btn"]').click()
+    // 5️⃣ Verificar que el formulario de edición cargó usando inputs visibles
+    cy.get('input[aria-label="nombre-input"]').should('exist')
+    cy.get('[data-testid="editar-btn"]').should('exist')
 
-    // 1️⃣3️⃣ Verificar que ya no aparece el curso en la lista
-    cy.contains(nombre).should('not.exist')
+    // 6️⃣ Modificar campos
+    cy.get('input[aria-label="nombre-input"]').clear().type(nombreEditado)
+    cy.get('input[aria-label="precio-input"]').clear().type('150')
+
+    // 7️⃣ Guardar cambios
+    cy.get('[data-testid="editar-btn"]').click()
+
+    // 8️⃣ Verificar que se refleja la actualización en la lista
+    cy.contains(nombreEditado).should('exist')
+    cy.contains('150').should('exist')
+
+    
+    // 9️⃣ Eliminar el curso
+    cy.contains(nombreEditado)
+      .parents('tr')
+      .within(() => {
+        cy.contains('Eliminar').click({ force: true })
+      })
+    cy.get('[data-testid="eliminar-confirm-btn"]').click()
+    cy.contains(nombreEditado).should('not.exist')
   })
 })
