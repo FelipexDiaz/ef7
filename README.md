@@ -211,7 +211,13 @@ npm run test:e2e
 ✔️ Estilizado con **vuetify**  
 ✔️ **Tests de componentes con Vitest**  
 ✔️ **Test End-to-End funcionales**  
-✔️ Despliegue final en **Firebase Hosting**
+✔️ Despliegue final en **Firebase Hosting** 
+
+---
+
+## 📌 Url Firebase Hosting
+
+https://test1-7dc10.web.app/
 
 ---
 
