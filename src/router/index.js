@@ -19,13 +19,18 @@ const router = createRouter({
   routes
 })
 
+// 🔹 Guard global de rutas
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.meta.requiresAuth
   const guest = to.meta.guest
   const user = store.getters['auth/getUser']
 
+  // Si la ruta requiere autenticación y no hay usuario → login
   if (requiresAuth && !user) return next('/login')
-  if (guest && user) return next('/')
+
+  // Si la ruta es guest (login/register) y hay usuario → admin
+  if (guest && user) return next('/admin')
+
   next()
 })
 

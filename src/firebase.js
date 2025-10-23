@@ -4,7 +4,9 @@ import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
+  setPersistence,
+  browserLocalPersistence
 } from 'firebase/auth'
 import {
   getFirestore,
@@ -19,7 +21,7 @@ import {
 
 // ⚠️ REEMPLAZA ESTO con tu configuración real de Firebase
 const firebaseConfig = {
- apiKey: "AIzaSyDHAkrZS2X3kwzJrIIxNeQWid6Lhz65lE0",
+  apiKey: "AIzaSyDHAkrZS2X3kwzJrIIxNeQWid6Lhz65lE0",
   authDomain: "test1-7dc10.firebaseapp.com",
   projectId: "test1-7dc10",
   storageBucket: "test1-7dc10.firebasestorage.app",
@@ -29,6 +31,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
+
+// ⚡ Persistencia de sesión entre pestañas
+setPersistence(auth, browserLocalPersistence)
+
 const db = getFirestore(app)
 
 export {
