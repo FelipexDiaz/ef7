@@ -19,7 +19,7 @@ import {
   getDocs
 } from 'firebase/firestore'
 
-// ⚠️ REEMPLAZA ESTO con tu configuración real de Firebase
+// ⚠️ configuración real de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyDHAkrZS2X3kwzJrIIxNeQWid6Lhz65lE0",
   authDomain: "test1-7dc10.firebaseapp.com",
