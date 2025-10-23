@@ -27,6 +27,20 @@
     <v-icon v-if="item.estado" color="green">mdi-check-circle</v-icon>
     <v-icon v-else color="grey">mdi-close-circle</v-icon>
   </template>
+
+<!-- Columna de miniatura de imagen -->
+<template #item.img="{ item }">
+  <v-avatar size="48">
+    <v-img
+      :src="item.img"
+      alt="Imagen del curso"
+      cover
+      v-if="item.img"
+    />
+    <v-icon v-else color="grey">mdi-image-off</v-icon>
+  </v-avatar>
+</template>
+
 </v-data-table>
 
     <!-- Modal para agregar/editar curso -->
@@ -94,6 +108,7 @@ const cursos = computed(() => store.getters['courses/all'] || [])
 const fields = [
   { title: 'Código', key: 'codigo' },
   { title: 'Nombre', key: 'nombre' },
+  { title: 'Imagen', key: 'img' },  
   { title: 'Precio', key: 'precio' },
   { title: 'Duración', key: 'duracion' },
   { title: 'Cupos', key: 'cupos' },
