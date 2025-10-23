@@ -1,8 +1,0 @@
-// src/setupTests.ts
-import { afterEach } from 'vitest'
-import { cleanup } from '@testing-library/vue'
-import '@testing-library/jest-dom'
-
-afterEach(() => {
-  cleanup()
-})
