@@ -1,8 +1,8 @@
 <template>
   <v-container class="py-4">
-    <h2 class="mb-4">Cursos más populares</h2>
     <BannerUdemy />
 
+    <h2 class="mb-4">Cursos más populares</h2>
     <CursosPopulares :cursos="cursosPorInscritos" />
 
     <h2 class="mt-8 mb-4">Cursos activos (A–Z)</h2>
